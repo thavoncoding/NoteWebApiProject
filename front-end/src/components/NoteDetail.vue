@@ -1,15 +1,15 @@
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-100 via-white to-purple-200 py-8">
-    <div class="backdrop-blur-md bg-white/70 border border-white/40 shadow-2xl rounded-3xl px-8 py-12 w-full max-w-xl animate-fade-in-up">
+  <div class="min-h-screen flex flex-col items-center justify-center bg-white py-8">
+    <div class="bg-white border border-gray-200 shadow-2xl rounded-3xl px-8 py-12 w-full max-w-xl animate-fade-in-up">
       <div v-if="note">
-        <h1 class="text-3xl font-extrabold text-purple-700 mb-4 text-center tracking-tight">{{ note.title }}</h1>
+        <h1 class="text-3xl font-extrabold text-black mb-4 text-center tracking-tight">{{ note.title }}</h1>
         <p class="mb-6 text-lg text-gray-700 text-center whitespace-pre-line">{{ note.content }}</p>
         <p class="text-xs text-gray-500 text-center mb-8">Created at: {{ formatDate(note.createdAt) }}</p>
 
         <div class="flex justify-center gap-4 mt-6">
-          <button @click="goBack" class="px-5 py-3 rounded-xl bg-gradient-to-r from-gray-300 to-gray-400 text-gray-700 font-semibold shadow hover:scale-105 transition-transform duration-200">Back</button>
-          <button @click="editNote" class="px-5 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-semibold shadow hover:scale-105 transition-transform duration-200">Edit</button>
-          <button @click="deleteNote" class="px-5 py-3 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold shadow hover:scale-105 transition-transform duration-200">Delete</button>
+          <button @click="goBack" class="px-5 py-3 rounded-xl bg-white text-black font-semibold border border-gray-400 shadow hover:bg-gray-100 transition">Back</button>
+          <button @click="editNote" class="px-5 py-3 rounded-xl bg-yellow-500 text-white font-semibold shadow hover:bg-yellow-600 transition">Edit</button>
+          <button @click="deleteNote" class="px-5 py-3 rounded-xl bg-red-500 text-white font-semibold shadow hover:bg-red-600 transition">Delete</button>
         </div>
       </div>
       <div v-else>

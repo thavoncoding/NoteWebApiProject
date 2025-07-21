@@ -2,50 +2,49 @@
   <div class="min-h-screen flex flex-col items-center bg-gradient-to-br from-purple-100 via-white to-purple-200 py-8">
     <!-- Top Bar -->
     <div class="flex justify-end w-full max-w-3xl px-4 animate-fade-in">
-      <button @click="logout" class="px-5 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold shadow-lg hover:scale-105 hover:from-red-600 hover:to-pink-600 transition-transform duration-200">
+      <button type="button" @click="logout" class="px-5 py-2 rounded-xl bg-red-600 text-white font-semibold shadow hover:bg-red-700 transition">
         Logout
       </button>
     </div>
 
     <!-- Main Card -->
-    <div class="backdrop-blur-md bg-white/70 border border-white/40 shadow-2xl rounded-3xl px-8 py-12 mt-8 w-full max-w-3xl animate-fade-in-up">
-      <h2 class="text-3xl font-extrabold text-purple-700 mb-8 text-center tracking-tight flex items-center justify-center gap-2">
-        📝 <span>My Notes</span>
-      </h2>
-
-      <!-- Search and Sort -->
-      <div class="flex items-center justify-center gap-2 mb-8 w-full max-w-md mx-auto">
-        <div class="relative flex-1">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-            <svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z' /></svg>
-          </span>
-          <input v-model="searchQuery" type="text" placeholder="Search..."
-            class="w-full pl-10 pr-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-300 bg-white/80 placeholder-gray-400 shadow-sm transition" />
-        </div>
-        <div>
-          <select v-model="sortOption" class="pl-3 pr-8 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-300 bg-white/80 shadow-sm transition">
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-            <option value="az">A–Z</option>
-          </select>
+    <div class="bg-white border border-gray-200 shadow rounded-3xl px-8 py-12 mt-8 w-full max-w-3xl">
+      <!-- Search, Sort, and Heading Row -->
+      <div class="flex items-center justify-between gap-4 mb-8 w-full max-w-3xl mx-auto">
+        <h2 class="text-3xl font-extrabold text-black tracking-tight flex items-center gap-2 whitespace-nowrap">
+          📝 <span>My Notes</span>
+        </h2>
+        <div class="flex flex-1 items-center gap-2">
+          <div class="relative flex-1 max-w-md">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+              <svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z' /></svg>
+            </span>
+            <input v-model="searchQuery" type="text" placeholder="Search..."
+              class="w-full pl-10 pr-3 py-2 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black bg-white placeholder-gray-500 shadow-sm transition" />
+          </div>
+          <div>
+            <select v-model="sortOption" class="pl-3 pr-8 py-2 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black bg-white shadow-sm transition">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="az">A–Z</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <!-- Add or Edit Note -->
-      <form @submit.prevent="isEditing ? updateNote() : createNote()"     
-        class="flex flex-col md:flex-row gap-4 items-center mb-8">
-       
+      <form @submit.prevent="isEditing ? updateNote() : createNote()" class="flex flex-col md:flex-row gap-4 items-center mb-8">
         <input v-model="newTitle" type="text" placeholder="Title"
-          class="flex-1 px-5 py-3 text-base rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white/80 placeholder-gray-400 shadow-sm transition"
+          class="flex-1 px-5 py-3 text-base rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black bg-white placeholder-gray-500 shadow-sm transition"
           required />
         <input v-model="newContent" type="text" placeholder="Description"
-          class="flex-1 px-5 py-3 text-base rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white/80 placeholder-gray-400 shadow-sm transition" />
+          class="flex-1 px-5 py-3 text-base rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black bg-white placeholder-gray-500 shadow-sm transition" />
         <button type="submit"
-          class="px-5 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold text-lg shadow-lg hover:scale-105 hover:from-purple-600 hover:to-indigo-600 transition-transform duration-200">
+         class="px-5 py-3 rounded-xl bg-black text-white font-bold text-lg shadow hover:bg-gray-800 transition">
           {{ isEditing ? "Update" : "Add" }} Note
         </button>
         <button v-if="isEditing" type="button" @click="cancelEdit"
-          class="px-5 py-3 rounded-xl bg-gradient-to-r from-gray-300 to-gray-400 text-gray-700 font-semibold shadow hover:scale-105 transition-transform duration-200">
+          class="px-5 py-3 rounded-xl bg-white text-black font-semibold border border-gray-400 shadow hover:bg-gray-100 transition">
           Cancel
         </button>
       </form>
@@ -57,8 +56,8 @@
 
       <ul class="space-y-6">
         <li v-for="note in filteredNotes" :key="note.id"
-          class="p-6 border border-gray-200 rounded-2xl bg-white/80 hover:shadow-xl transition relative animate-fade-in-up">
-          <router-link :to="`/note/${note.id}`" class="font-semibold text-xl text-purple-700 hover:underline">
+          class="p-6 border border-gray-200 rounded-2xl bg-white hover:shadow-xl transition relative">
+          <router-link :to="`/note/${note.id}`" class="font-semibold text-xl text-black hover:underline">
             {{ note.title }}
           </router-link>
 
@@ -71,12 +70,12 @@
 
           <!-- Action buttons -->
           <div class="absolute top-4 right-4 space-x-2 flex">
-            <button @click="startEdit(note)"
-              class="text-indigo-600 text-sm font-semibold hover:underline focus:outline-none transition">
+            <button type="button" @click="startEdit(note)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil h-5 w-5"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
               Edit
             </button>
-            <button @click="deleteNote(note.id)"
-              class="text-red-600 text-sm font-semibold hover:underline focus:outline-none transition">
+            <button type="button" @click="deleteNote(note.id)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2 h-5 w-5"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
               Delete
             </button>
           </div>
@@ -118,15 +117,18 @@ const fetchNotes = async () => {
 };
 
 const createNote = async () => {
+    console.log('createNote:', newTitle.value, newContent.value); // Debug log
     try {
         await axios.post("http://localhost:5280/api/Notes", {
             title: newTitle.value,
             content: newContent.value,
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
-
-        newTitle.value = "";
-        newContent.value = "";
         await fetchNotes();
+        cancelEdit();
     } catch (err) {
         console.error("Error creating note:", err);
     }
@@ -145,16 +147,16 @@ const deleteNote = async (id: number) => {
 };
 
 const startEdit = (note: Note) => {
-    isEditing.value = true;
-    editingNoteId.value = note.id;
-    newTitle.value = note.title;
-    newContent.value = note.content || "";
+  isEditing.value = true;
+  editingNoteId.value = note.id;
+  newTitle.value = note.title;
+  newContent.value = note.content || "";
 };
 
 const updateNote = async () => {
     if (!editingNoteId.value) return;
     try {
-        const res = await axios.put(
+        await axios.put(
             `http://localhost:5280/api/Notes/${editingNoteId.value}`,
             {
                 id: editingNoteId.value,
@@ -162,24 +164,18 @@ const updateNote = async () => {
                 content: newContent.value,
             }
         );
-        const index = notes.value.findIndex((n) => n.id === editingNoteId.value);
-        if (index !== -1) {
-            notes.value[index] = res.data;
-        }
         await fetchNotes();
-        resetForm();
+        cancelEdit();
     } catch (err) {
         console.error("Error updating note:", err);
     }
 };
 
-const cancelEdit = () => resetForm();
-
-const resetForm = () => {
-    newTitle.value = "";
-    newContent.value = "";
-    isEditing.value = false;
-    editingNoteId.value = null;
+const cancelEdit = () => {
+  isEditing.value = false;
+  editingNoteId.value = null;
+  newTitle.value = "";
+  newContent.value = "";
 };
 
 const formatDate = (iso: string) =>

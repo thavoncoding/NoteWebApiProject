@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-100 via-white to-purple-200 py-8">
-    <div class="backdrop-blur-md bg-white/70 border border-white/40 shadow-2xl rounded-3xl px-8 py-12 w-full max-w-xl animate-fade-in-up">
-      <h1 class="text-3xl font-extrabold text-purple-700 mb-8 text-center tracking-tight flex items-center justify-center gap-2">📝 Edit Note</h1>
+  <div class="min-h-screen flex flex-col items-center justify-center bg-white py-8">
+    <div class="bg-white border border-gray-200 shadow-2xl rounded-3xl px-8 py-12 w-full max-w-xl animate-fade-in-up">
+      <h1 class="text-3xl font-extrabold text-black mb-8 text-center tracking-tight flex items-center justify-center gap-2">📝 Edit Note</h1>
 
       <form @submit.prevent="updateNote" class="space-y-8">
         <div>
@@ -10,7 +10,7 @@
             v-model="title"
             type="text"
             placeholder="Note Title"
-            class="w-full px-5 py-3 text-base rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white/80 placeholder-gray-400 shadow-sm transition"
+            class="w-full px-5 py-3 text-base rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black bg-white placeholder-gray-500 shadow-sm transition"
             required
           />
         </div>
@@ -20,7 +20,7 @@
           <textarea
             v-model="content"
             placeholder="Write something awesome..."
-            class="w-full h-40 px-5 py-3 text-base rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white/80 placeholder-gray-400 shadow-sm resize-none transition"
+            class="w-full h-40 px-5 py-3 text-base rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black bg-white placeholder-gray-500 shadow-sm resize-none transition"
           ></textarea>
         </div>
 
@@ -28,13 +28,13 @@
           <button
             type="button"
             @click="goBack"
-            class="px-5 py-3 rounded-xl bg-gradient-to-r from-gray-300 to-gray-400 text-gray-700 font-semibold shadow hover:scale-105 transition-transform duration-200"
+            class="px-5 py-3 rounded-xl bg-white text-black font-semibold border border-gray-400 shadow hover:bg-gray-100 transition"
           >
             Cancel
           </button>
           <button
             type="submit"
-            class="px-5 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-semibold shadow hover:scale-105 transition-transform duration-200"
+            class="px-5 py-3 rounded-xl bg-black text-white font-semibold shadow hover:bg-gray-800 transition"
           >
             Update
           </button>
