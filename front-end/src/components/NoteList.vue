@@ -40,11 +40,11 @@
         <input v-model="newContent" type="text" placeholder="Description"
           class="flex-1 px-5 py-3 text-base rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black bg-white placeholder-gray-500 shadow-sm transition" />
         <button type="submit"
-         class="px-5 py-3 rounded-xl bg-black text-white font-bold text-lg shadow hover:bg-gray-800 transition">
-          {{ isEditing ? "Update" : "Add" }} Note
+         class="px-4 py-2 rounded-lg bg-black text-white font-bold shadow hover:bg-gray-800 transition w-32">
+          {{ isEditing ? "Update" : "Add Note" }}
         </button>
         <button v-if="isEditing" type="button" @click="cancelEdit"
-          class="px-5 py-3 rounded-xl bg-white text-black font-semibold border border-gray-400 shadow hover:bg-gray-100 transition">
+          class="px-4 py-2 rounded-lg bg-white text-black font-semibold border border-gray-400 shadow hover:bg-gray-100 transition">
           Cancel
         </button>
       </form>
@@ -70,12 +70,14 @@
 
           <!-- Action buttons -->
           <div class="absolute top-4 right-4 space-x-2 flex">
-            <button type="button" @click="startEdit(note)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil h-5 w-5"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+            <button type="button" @click="startEdit(note)"
+              class="px-4 py-2 rounded-lg bg-yellow-400 text-black font-semibold shadow hover:bg-yellow-500 transition flex items-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
               Edit
             </button>
-            <button type="button" @click="deleteNote(note.id)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2 h-5 w-5"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+            <button type="button" @click="deleteNote(note.id)"
+              class="px-4 py-2 rounded-lg bg-red-500 text-white font-semibold shadow hover:bg-red-600 transition flex items-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2 h-4 w-4"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
               Delete
             </button>
           </div>
