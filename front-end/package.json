@@ -18,7 +18,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "^1.3.5",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vue-toast-notification": "^3.1.3"
   },
   "devDependencies": {
     "@types/node": "^24.0.15",

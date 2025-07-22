@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import NoteList from '../components/NoteList.vue'
-import NoteDetail from '../components/NoteDetail.vue'
-import EditNote from '../pages/EditNote.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
+import NoteList from '../features/notes/NoteList.vue'
+import NoteDetail from '../features/notes/NoteDetail.vue'
+import EditNote from '../features/notes/EditNote.vue'
+import Login from '../features/auth/Login.vue'
+import Register from '../features/auth/Register.vue'
 
 const routes = [
   { path: '/', component: Login },
@@ -19,7 +19,7 @@ const router = createRouter({
 })
 
 // Global navigation guard
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const isAuthenticated = !!localStorage.getItem('token')
   if (to.meta.requiresAuth && !isAuthenticated) {
     next('/') // Redirect to login
