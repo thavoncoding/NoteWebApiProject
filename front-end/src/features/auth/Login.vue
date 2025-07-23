@@ -1,6 +1,5 @@
 <template>
   <div class="min-h-screen flex flex-col justify-center items-center bg-white">
-    <!-- Login Card -->
     <div class="bg-white border border-gray-200 shadow-2xl rounded-3xl px-8 py-12 mt-8 w-full max-w-md animate-fade-in-up">
       <h2 class="text-3xl font-extrabold text-black mb-8 text-center tracking-tight">Welcome Back</h2>
       <p class="text-center text-gray-600 mb-8">Sign in to your account</p>
@@ -62,11 +61,11 @@ const login = async () => {
       password: password.value,
     })
 
-    // (Optional) Store token if using JWT
+    // Store token 
     localStorage.setItem('token', res.data.token)
 
     message.value = res.data || 'Login successful!'
-    router.push('/notelist') // ✅ Go to NoteList page
+    router.push('/notelist')
   } catch (err: any) {
     if (err?.response?.status === 401) {
       message.value = 'Incorrect username or password.'

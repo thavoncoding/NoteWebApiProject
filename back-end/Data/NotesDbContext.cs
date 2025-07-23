@@ -8,6 +8,6 @@ namespace NotesApi.Data
         public NotesDbContext(DbContextOptions<NotesDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Note> Notes { get; set; } // Optional if you already have Notes
+        public DbSet<Note> Notes { get; set; } 
     }
 }

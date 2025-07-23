@@ -8,7 +8,7 @@
       </button>
     </div>
 
-    <!-- Main Card -->
+    <!-- Main List -->
     <div class="bg-white border border-gray-200 shadow rounded-3xl px-8 py-12 mt-8 w-full max-w-3xl">
       <!-- Search, Sort, and Heading Row -->
       <div class="flex items-center justify-between gap-4 mb-8 w-full max-w-3xl mx-auto">
@@ -140,7 +140,7 @@ const fetchNotes = async () => {
 };
 
 const createNote = async () => {
-  console.log('createNote:', newTitle.value, newContent.value); // Debug log
+  //console.log('createNote:', newTitle.value, newContent.value); 
   try {
     await axios.post("http://localhost:5280/api/Notes", {
       title: newTitle.value,

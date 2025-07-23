@@ -1,6 +1,5 @@
 <template>
   <div class="min-h-screen flex flex-col justify-center items-center bg-white">
-    <!-- Register Card -->
     <div class="bg-white border border-gray-200 shadow-2xl rounded-3xl px-8 py-12 mt-8 w-full max-w-md animate-fade-in-up">
       <h2 class="text-3xl font-extrabold text-black mb-8 text-center tracking-tight">Create Account</h2>
       <p class="text-center text-gray-600 mb-8">Sign up to get started</p>

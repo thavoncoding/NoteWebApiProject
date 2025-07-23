@@ -4,7 +4,6 @@ using NotesApi.Data;
 using NotesApi.Models;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NotesApi.Controllers
 {
