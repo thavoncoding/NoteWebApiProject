@@ -80,6 +80,3 @@ This is the **Vue 3 + TypeScript + Vite** frontend for the Notes App. It connect
 - If you see CORS errors, make sure the backend is running and CORS is enabled.
 - If you change the backend port or URL, update the API URLs in the frontend code.
 
-## License
-
-MIT (or specify your license)

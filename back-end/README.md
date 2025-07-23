@@ -84,6 +84,36 @@ back-end/
 - `appsettings.json` contains logging and connection string settings.
 - Use `appsettings.Development.json` for local overrides.
 
+## Database Schema (Manual Setup)
+
+If you prefer to create the database and tables manually in SQL Server (instead of using EF Core migrations), use the following SQL scripts.
+
+**Database name:** `NotesDb`
+
+```sql
+CREATE DATABASE NotesDb;
+GO
+
+USE NotesDb;
+GO
+
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Username NVARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE Notes (
+    Id INT PRIMARY KEY IDENTITY,
+    Title NVARCHAR(255) NOT NULL,
+    Content TEXT NULL,
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    UpdatedAt DATETIME NULL,
+    UserId INT NOT NULL 
+);
+```
+
 ## Updating & Extending
 - **To add new endpoints:**
   - Create a new controller in `Controllers/`.
@@ -100,10 +130,5 @@ back-end/
 - Add migration: `dotnet ef migrations add <MigrationName>`
 - Update DB: `dotnet ef database update`
 - List packages: `dotnet list package`
-
-## License
-MIT (or specify your license)
-
----
 
 For the Vue 3 frontend, see the `front-end` directory and its README for setup instructions. 
